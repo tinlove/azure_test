@@ -41,10 +41,10 @@ io.sockets.on('connection',function(socket){
     socket.on('fromclient',function(data){
         socket.broadcast.emit('toclient',data);
         socket.emit('toclient',data);
-        console.log('Message from client :'+data.msg);
+        console.log('Message from client :'+data.message);
 
-        if(data.msg != ""){
-            notificationhubService1.gcm.send(null, {data:{id:socket.id, message:data.msg}}, function(error){
+        if(data.message != ""){
+            notificationhubService1.gcm.send(null, {data:{id:socket.id, message:data.message}}, function(error){
                 if(!error){
                     //notification sent
                     console.log('send');
